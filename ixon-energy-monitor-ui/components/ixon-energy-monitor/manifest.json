@@ -1,0 +1,213 @@
+{
+  "main": "pct-ixon-energy-monitor.min.js",
+  "version": "2",
+  "sheetSettings": {
+    "defaultCols": 10,
+    "defaultRows": 12,
+    "minCols": 6,
+    "minRows": 6
+  },
+  "inputs": [
+    {
+      "key": "header",
+      "type": "Group",
+      "label": "Title",
+      "children": [
+        {
+          "key": "title",
+          "type": "String",
+          "label": "Title",
+          "placeholder": "Leave empty for no title"
+        }
+      ]
+    },
+    {
+      "key": "buildings",
+      "type": "List",
+      "label": "Contracted capacity per building",
+      "itemType": {
+        "key": "building",
+        "type": "Group",
+        "label": "Building",
+        "summary": {
+          "label": "{{name}}: {{kw}} kW"
+        },
+        "children": [
+          {
+            "key": "name",
+            "type": "String",
+            "label": "Building name",
+            "required": true,
+            "description": "Type the name exactly as it appears in the building dropdown, or copy it from the Meterbeheer HUB."
+          },
+          {
+            "key": "kw",
+            "type": "Number",
+            "label": "Contracted capacity (kW)",
+            "min": 0,
+            "step": 0.5,
+            "placeholder": "e.g. 140",
+            "description": "Quarter-hours whose average power is above this value are marked as exceeded. 1 kW equals 0.25 kWh per quarter-hour, so 140 kW is 35 kWh per quarter-hour. Leave empty if the amount isn't known yet; the chart is then shown without the capacity line."
+          }
+        ]
+      }
+    },
+    {
+      "key": "colors",
+      "type": "Group",
+      "label": "Chart colours",
+      "summary": {
+        "label": "Bars, power line and capacity line",
+        "colorField": "bar"
+      },
+      "children": [
+        {
+          "key": "bar",
+          "type": "Color",
+          "label": "Consumption bars",
+          "defaultValue": "#7F9DBF",
+          "required": true
+        },
+        {
+          "key": "line",
+          "type": "Color",
+          "label": "Average power line (quarter-hour view)",
+          "defaultValue": "#EE5A10",
+          "required": true
+        },
+        {
+          "key": "capacity",
+          "type": "Color",
+          "label": "Contracted capacity line and exceedances",
+          "defaultValue": "#D62F2F",
+          "required": true
+        }
+      ]
+    },
+    {
+      "key": "rules",
+      "type": "List",
+      "label": "Color rules",
+      "itemType": {
+        "key": "rule",
+        "label": "Color rule",
+        "type": "Group",
+        "summary": {
+          "label": "{{$appliesTo.shortLabel}}: {{$operator.shortLabel}} {{value}} kWh ({{colorUsage}})",
+          "colorField": "color"
+        },
+        "children": [
+          {
+            "key": "appliesTo",
+            "label": "Applies to",
+            "type": "Selection",
+            "required": true,
+            "defaultValue": "all",
+            "options": [
+              {
+                "value": "all",
+                "shortLabel": "All views",
+                "label": "All views"
+              },
+              {
+                "value": "quarter",
+                "shortLabel": "Quarter-hours",
+                "label": "Quarter-hour bars"
+              },
+              {
+                "value": "day",
+                "shortLabel": "Days",
+                "label": "Daily bars"
+              },
+              {
+                "value": "month",
+                "shortLabel": "Months",
+                "label": "Monthly bars"
+              },
+              {
+                "value": "year",
+                "shortLabel": "Years",
+                "label": "Yearly bars"
+              }
+            ]
+          },
+          {
+            "key": "color",
+            "label": "Color",
+            "required": true,
+            "defaultValue": "#C0392B",
+            "type": "Color"
+          },
+          {
+            "key": "colorUsage",
+            "label": "Threshold color usage",
+            "type": "Selection",
+            "required": true,
+            "defaultValue": "bar",
+            "options": [
+              {
+                "value": "bar",
+                "label": "Use threshold color for the bar"
+              },
+              {
+                "value": "label",
+                "label": "Use threshold color for the value label"
+              }
+            ]
+          },
+          {
+            "key": "operator",
+            "label": "Operator",
+            "required": true,
+            "type": "Selection",
+            "options": [
+              {
+                "value": "eq",
+                "shortLabel": "=",
+                "label": "Equal to (=)"
+              },
+              {
+                "value": "ne",
+                "shortLabel": "≠",
+                "label": "Not equal to (≠)"
+              },
+              {
+                "value": "lt",
+                "shortLabel": "<",
+                "label": "Less than (<)"
+              },
+              {
+                "value": "le",
+                "shortLabel": "≤",
+                "label": "Less than or equal (≤)"
+              },
+              {
+                "value": "gt",
+                "shortLabel": ">",
+                "label": "Greater than (>)"
+              },
+              {
+                "value": "ge",
+                "shortLabel": "≥",
+                "label": "Greater than or equal (≥)"
+              }
+            ]
+          },
+          {
+            "key": "value",
+            "label": "Value (kWh)",
+            "required": true,
+            "type": "Number",
+            "description": "Compared against the kWh of each bar in the views this rule applies to."
+          },
+          {
+            "key": "showLine",
+            "label": "Show reference line",
+            "type": "Checkbox",
+            "defaultValue": false
+          }
+        ]
+      }
+    }
+  ]
+}
