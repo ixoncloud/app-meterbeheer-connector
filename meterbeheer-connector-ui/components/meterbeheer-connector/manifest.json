@@ -1,6 +1,6 @@
 {
-  "main": "pct-ixon-energy-monitor.min.js",
-  "version": "2",
+  "main": "pct-meterbeheer-connector.min.js",
+  "version": "3",
   "sheetSettings": {
     "defaultCols": 10,
     "defaultRows": 12,

@@ -1,4 +1,4 @@
-"""Unit tests for functions/ixon_energy_monitor.py. Run from the workspace root: python -m unittest -v"""
+"""Unit tests for functions/meterbeheer_connector.py. Run from the workspace root: python -m unittest -v"""
 
 import sys
 import types
@@ -24,7 +24,7 @@ except ImportError:  # running outside the Cloud Function venv: a stand-in is en
         sys.modules.setdefault(name, types.ModuleType(name))
     sys.modules['ixoncdkingress.function.context'] = stub
 
-import ixon_energy_monitor as mb  # noqa: E402
+import meterbeheer_connector as mb  # noqa: E402
 
 AMS = ZoneInfo('Europe/Amsterdam')
 FEED_UUID = '235b6b58-0000-4dff-a81d-000000000000'
