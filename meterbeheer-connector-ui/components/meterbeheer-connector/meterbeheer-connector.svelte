@@ -88,7 +88,7 @@
     };
 
     try {
-      const res = await client.call('functions.ixon_energy_monitor.get_feeds', {});
+      const res = await client.call('functions.meterbeheer_connector.get_feeds', {});
       const r = res?.data ?? res;
       if (r?.success) feeds = r.data ?? [];
       else error = r?.error ?? 'Could not load feeds.';
@@ -178,7 +178,7 @@
     error = '';
     hover = null;
     try {
-      const res = await client.call('functions.ixon_energy_monitor.get_consumption_series', {
+      const res = await client.call('functions.meterbeheer_connector.get_consumption_series', {
         feed_id: feedId,
         channel_code: channel,
         from_ms: fromMs,

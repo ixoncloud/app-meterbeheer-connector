@@ -1,6 +1,15 @@
 # Changelog
 
-All notable changes to the IXON Energy Monitor. Version numbers follow the UI Component's `manifest.json` version; Cloud Function changes are listed under the same release.
+All notable changes to the MeterBeheer Connector. Version numbers follow the UI Component's `manifest.json` version; Cloud Function changes are listed under the same release.
+
+## Version 3 (06-11-2026)
+
+### Added
+- **Component icon** (`icon.svg`) for the UI Component, shown in the IXON Cloud component picker.
+
+### Changed
+- Renamed the app from IXON Energy Connector to **MeterBeheer Connector**.
+- Renamed the project from `ixon-energy-monitor` to `meterbeheer-connector` (folders, component, element and Cloud Function module). The component is now `pct-meterbeheer-connector` and the Cloud Function calls are `functions.meterbeheer_connector.*`.
 
 ## Version 2 (04-11-2026)
 

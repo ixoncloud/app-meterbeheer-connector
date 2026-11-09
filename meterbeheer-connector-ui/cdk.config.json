@@ -2,15 +2,11 @@
   "$schema": "./node_modules/@ixon-cdk/core/config/schema.json",
   "prefix": "pct",
   "components": {
-    "ixon-energy-monitor": {
+    "meterbeheer-connector": {
       "runner": {
         "build": {
           "builder": "@ixon-cdk/svelte-builder:browser",
-          "input": "ixon-energy-monitor.svelte"
-        },
-        "deploy": {
-          "company": "7966-5700-7008-0957-0300",
-          "template": "05iz5BLHlNYE"
+          "input": "meterbeheer-connector.svelte"
         }
       }
     }
